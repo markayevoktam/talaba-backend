@@ -47,4 +47,5 @@ public class Yunalish {
     public void setFakultet(Fakultet fakultet) {
         this.fakultet = fakultet;
     }
+
 }
