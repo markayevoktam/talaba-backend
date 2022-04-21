@@ -35,6 +35,7 @@ public class FakultetController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
+
         fks.deleteById(id);
         return ResponseEntity.noContent().build();
     }

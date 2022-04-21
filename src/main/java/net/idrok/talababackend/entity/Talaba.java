@@ -13,7 +13,18 @@ public class Talaba {
     private String yosh;
     private String hudud;
     @ManyToOne
+    Loyiha loyiha;
+    @ManyToOne
     Guruh guruh;
+
+    public Loyiha getLoyiha() {
+        return loyiha;
+    }
+
+    public void setLoyiha(Loyiha loyiha) {
+        this.loyiha = loyiha;
+    }
+
     @ManyToOne
     Xarakter xarakter;
 
