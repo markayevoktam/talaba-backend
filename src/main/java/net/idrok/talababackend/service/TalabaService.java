@@ -58,4 +58,19 @@ public class TalabaService implements Talabatimp {
 
         }
     }
+
+    public Page<Talaba> getAllByFilter(String key, Long fakultetId, Long yunalishId, Long guruhId, Pageable pageable) {
+        if (guruhId != null) {
+            // guruh va key
+            return tsr.findByGuruhAndKey(key,guruhId,pageable);
+        } else if (yunalishId != null) {
+            // yunalish
+            return  tsr.findByYunalishAndKey(key,yunalishId,pageable);
+        } else if (fakultetId != null) {
+            // fakultet bo'yicha
+            return tsr.findByFakultetAndKey(key, fakultetId, pageable);
+        } else {
+            return tsr.findByOnlyKey(key.toUpperCase(), pageable);
+        }
+    }
 }

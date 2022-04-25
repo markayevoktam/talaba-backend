@@ -54,6 +54,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // fan'ni GET qilsishni umuman ochib qo'yish
                 .antMatchers(HttpMethod.POST, "/api/account/auth").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/account/register").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/fakultet").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/yunalish").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/guruh").permitAll()
                 .antMatchers("/api/public/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

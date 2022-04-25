@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/public")
@@ -20,8 +19,14 @@ public class PublicController {
     private TalabaService talabaService;
 
     @GetMapping("talaba")
-    public Page<Talaba> getTalaba(@RequestParam(value = "key", required = false, defaultValue = "") String key, Pageable pageable){
-        return talabaService.findAllByFamilyaContainsIgnoreCaseOrIsmContainsIgnoreCaseOrSharifContainsIgnoreCaseOrHududContainsIgnoreCaseOrId(key, pageable);
+    public Page<Talaba> getTalaba(
+            @RequestParam(value = "key", required = false, defaultValue = "") String key,
+            @RequestParam(value = "fakultet", required = false) Long fakultetId,
+            @RequestParam(value = "yunalish", required = false) Long yunalihsId,
+            @RequestParam(value = "guruh", required = false) Long guruhId,
+                                                Pageable pageable){
+
+        return talabaService.getAllByFilter(key, fakultetId, yunalihsId, guruhId, pageable);
     }
     @GetMapping("talaba/{id}")
     public ResponseEntity<Talaba> getTalabaById(@PathVariable Long id){
