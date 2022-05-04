@@ -1,8 +1,5 @@
 package net.idrok.talababackend.controller;
-
-import net.idrok.talababackend.entity.Guruh;
 import net.idrok.talababackend.entity.Talaba;
-import net.idrok.talababackend.service.GuruhService;
 import net.idrok.talababackend.service.TalabaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,11 +19,11 @@ public class PublicController {
     public Page<Talaba> getTalaba(
             @RequestParam(value = "key", required = false, defaultValue = "") String key,
             @RequestParam(value = "fakultet", required = false) Long fakultetId,
-            @RequestParam(value = "yunalish", required = false) Long yunalihsId,
+            @RequestParam(value = "yunalish", required = false) Long yunalishId,
             @RequestParam(value = "guruh", required = false) Long guruhId,
                                                 Pageable pageable){
 
-        return talabaService.getAllByFilter(key, fakultetId, yunalihsId, guruhId, pageable);
+        return talabaService.getAllByFilter(key, fakultetId, yunalishId, guruhId, pageable);
     }
     @GetMapping("talaba/{id}")
     public ResponseEntity<Talaba> getTalabaById(@PathVariable Long id){

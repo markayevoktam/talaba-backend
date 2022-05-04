@@ -12,6 +12,11 @@ public class Talaba {
     private String sharif;
     private String yosh;
     private String hudud;
+
+    @ManyToOne
+    private Fayl rasm;
+
+
     @ManyToOne
     Loyiha loyiha;
     @ManyToOne
@@ -78,8 +83,13 @@ public class Talaba {
         this.sharif = sharif;
     }
 
+    public Fayl getRasm() {
+        return rasm;
+    }
 
-
+    public void setRasm(Fayl rasm) {
+        this.rasm = rasm;
+    }
 
     public String getYosh() {
         return yosh;

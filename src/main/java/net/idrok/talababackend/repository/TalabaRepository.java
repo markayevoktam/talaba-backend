@@ -20,10 +20,10 @@ TalabaRepository extends JpaRepository<Talaba, Long> {
     Page<Talaba> findByFakultetAndKey(@Param("key") String key, @Param("fakultetId") Long fakultetId, Pageable pageable);
 
 
-    @Query("FROM Talaba t WHERE ( upper(t.ism) like concat('%',:key,'%') OR upper(t.familya) like concat('%',:key,'%') OR upper(t.sharif) like concat('%',:key,'%')  OR  upper(t.xarakter.nom) like concat('%',:key,'%') OR  upper(t.hudud) like concat('%',:key,'%')  ) AND t.guruh.yunalish.fakultet.id = :yunalishId ")
+    @Query("FROM Talaba t WHERE ( upper(t.ism) like concat('%',:key,'%') OR upper(t.familya) like concat('%',:key,'%') OR upper(t.sharif) like concat('%',:key,'%')  OR  upper(t.xarakter.nom) like concat('%',:key,'%') OR  upper(t.hudud) like concat('%',:key,'%')  ) AND t.guruh.yunalish.id = :yunalishId ")
     Page<Talaba> findByYunalishAndKey(@Param("key") String key, @Param("yunalishId") Long yunalishId, Pageable pageable);
 
-    @Query("FROM Talaba t WHERE ( upper(t.ism) like concat('%',:key,'%') OR upper(t.familya) like concat('%',:key,'%') OR upper(t.sharif) like concat('%',:key,'%')  OR  upper(t.xarakter.nom) like concat('%',:key,'%')  OR  upper(t.hudud) like concat('%',:key,'%')  ) AND t.guruh.yunalish.fakultet.id = :guruhId ")
+    @Query("FROM Talaba t WHERE ( upper(t.ism) like concat('%',:key,'%') OR upper(t.familya) like concat('%',:key,'%') OR upper(t.sharif) like concat('%',:key,'%')  OR  upper(t.xarakter.nom) like concat('%',:key,'%')  OR  upper(t.hudud) like concat('%',:key,'%')  ) AND t.guruh.id = :guruhId ")
     Page<Talaba> findByGuruhAndKey(@Param("key") String key, @Param("guruhId") Long guruhId, Pageable pageable);
 
 
