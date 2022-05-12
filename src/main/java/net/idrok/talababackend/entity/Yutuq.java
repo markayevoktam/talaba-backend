@@ -9,17 +9,17 @@ public class Yutuq {
     private Long id;
     private String nom;
     private String info;
-    @ManyToOne
-    Talaba talaba;
-
-    public Talaba getTalaba() {
-        return talaba;
-    }
-
-    public void setTalaba(Talaba talaba) {
-        this.talaba = talaba;
-    }
-
+//    @ManyToOne
+//    Talaba talaba;
+//
+//    public Talaba getTalaba() {
+//        return talaba;
+//    }
+//
+//    public void setTalaba(Talaba talaba) {
+//        this.talaba = talaba;
+//    }
+//
     public Yutuq() {
     }
 

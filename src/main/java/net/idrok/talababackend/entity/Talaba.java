@@ -10,7 +10,7 @@ public class Talaba {
     private  String ism;
     private String familya;
     private String sharif;
-    private String yosh;
+    private Long yosh;
     private String hudud;
 
     @ManyToOne
@@ -79,6 +79,8 @@ public class Talaba {
         return sharif;
     }
 
+
+
     public void setSharif(String sharif) {
         this.sharif = sharif;
     }
@@ -91,13 +93,7 @@ public class Talaba {
         this.rasm = rasm;
     }
 
-    public String getYosh() {
-        return yosh;
-    }
 
-    public void setYosh(String yosh) {
-        this.yosh = yosh;
-    }
 
     public String getHudud() {
         return hudud;
@@ -105,6 +101,14 @@ public class Talaba {
 
     public void setHudud(String hudud) {
         this.hudud = hudud;
+    }
+
+    public Long getYosh() {
+        return yosh;
+    }
+
+    public void setYosh(Long yosh) {
+        this.yosh = yosh;
     }
 
     public Guruh getGuruh() {
