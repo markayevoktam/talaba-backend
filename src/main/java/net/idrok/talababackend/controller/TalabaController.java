@@ -15,9 +15,9 @@ public class TalabaController {
     @Autowired
     TalabaService tls;
     @GetMapping()
-    public ResponseEntity<Page<Talaba>> getAll(@RequestParam(name = "key",required = false) String key1, Pageable pageable){
-        if(key1==null) key1="";
-        return ResponseEntity.ok(tls.getAll( pageable));
+    public ResponseEntity<Page<Talaba>> getAll(@RequestParam(name = "key",required = false) String key, Pageable pageable){
+        if(key==null) key="";
+        return ResponseEntity.ok(tls.getAll(key, pageable));
     }
 
     @PostMapping()
@@ -35,4 +35,10 @@ public class TalabaController {
         tls.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/talented")
+    public ResponseEntity<Page<Talaba>> getAllTalanted(Pageable pageable) {
+        return  ResponseEntity.ok(tls.getAllByTalented(true, pageable));
+    }
+
 }

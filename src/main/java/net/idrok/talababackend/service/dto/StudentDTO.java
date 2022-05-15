@@ -2,6 +2,8 @@ package net.idrok.talababackend.service.dto;
 
 import net.idrok.talababackend.entity.Student;
 
+import java.time.LocalDate;
+
 public class StudentDTO {
     private Long id;
     private String ism;
@@ -10,8 +12,8 @@ public class StudentDTO {
     private String hudud;
     private Long yosh;
     private String ishlashJoyi;
-    private String oqishgaKirYil;
-    private String oqishTugYil;
+    private LocalDate oqishgaKirYil;
+    private LocalDate oqishTugYil;
     private String info;
 
 
@@ -20,18 +22,6 @@ public class StudentDTO {
 
     }
 
-    public StudentDTO(Long id, String ism, String familya, String sharif, String hudud, Long yosh, String ishlashJoyi, String oqishgaKirYil, String oqishTugYil, String info) {
-        this.id = id;
-        this.ism = ism;
-        this.familya = familya;
-        this.sharif = sharif;
-        this.hudud = hudud;
-        this.yosh = yosh;
-        this.ishlashJoyi = ishlashJoyi;
-        this.oqishgaKirYil = oqishgaKirYil;
-        this.oqishTugYil = oqishTugYil;
-        this.info = info;
-    }
 
     public StudentDTO(Student student) {
         this.id=student.getId();
@@ -44,17 +34,20 @@ public class StudentDTO {
         this.oqishgaKirYil=student.getOqishgaKirYil();
         this.oqishTugYil=student.getOqishTugYil();
         this.info=student.getInfo();
-
-
-
-
-
-
     }
 
-
-
-
+    public StudentDTO(Long id, String ism, String familya, String sharif, String hudud, Long yosh, String ishlashJoyi, LocalDate oqishgaKirYil, LocalDate oqishTugYil, String info) {
+        this.id = id;
+        this.ism = ism;
+        this.familya = familya;
+        this.sharif = sharif;
+        this.hudud = hudud;
+        this.yosh = yosh;
+        this.ishlashJoyi = ishlashJoyi;
+        this.oqishgaKirYil = oqishgaKirYil;
+        this.oqishTugYil = oqishTugYil;
+        this.info = info;
+    }
 
     public Long getId() {
         return id;
@@ -106,8 +99,20 @@ public class StudentDTO {
         this.ishlashJoyi = ishlashJoyi;
     }
 
-    public String getOqishgaKirYil() {
+    public LocalDate getOqishgaKirYil() {
         return oqishgaKirYil;
+    }
+
+    public void setOqishgaKirYil(LocalDate oqishgaKirYil) {
+        this.oqishgaKirYil = oqishgaKirYil;
+    }
+
+    public LocalDate getOqishTugYil() {
+        return oqishTugYil;
+    }
+
+    public void setOqishTugYil(LocalDate oqishTugYil) {
+        this.oqishTugYil = oqishTugYil;
     }
 
     public Long getYosh() {
@@ -118,17 +123,7 @@ public class StudentDTO {
         this.yosh = yosh;
     }
 
-    public void setOqishgaKirYil(String oqishgaKirYil) {
-        this.oqishgaKirYil = oqishgaKirYil;
-    }
 
-    public String getOqishTugYil() {
-        return oqishTugYil;
-    }
-
-    public void setOqishTugYil(String oqishTugYil) {
-        this.oqishTugYil = oqishTugYil;
-    }
 
     public String getInfo() {
         return info;

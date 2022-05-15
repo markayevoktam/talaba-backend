@@ -38,6 +38,8 @@ public class Talaba {
 
     private String info;
 
+    private Boolean talented;
+
 
     public Talaba() {
 
@@ -133,5 +135,14 @@ public class Talaba {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+
+    public Boolean isTalented() {
+        return talented;
+    }
+
+    public void setTalented(Boolean talented) {
+        this.talented = talented;
     }
 }

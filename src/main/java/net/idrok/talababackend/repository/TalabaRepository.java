@@ -27,4 +27,5 @@ TalabaRepository extends JpaRepository<Talaba, Long> {
     Page<Talaba> findByGuruhAndKey(@Param("key") String key, @Param("guruhId") Long guruhId, Pageable pageable);
 
 
+    Page<Talaba> findAllByTalented(Boolean b, Pageable pageable);
 }

@@ -14,12 +14,17 @@ public class TalabaService implements Talabatimp {
     @Autowired
     TalabaRepository tsr;
 
-    public Page<Talaba> getAll(Pageable pageable) {
-        return tsr.findAll(pageable);
+    public Page<Talaba> getAll(String key, Pageable pageable) {
+        return tsr.findByOnlyKey(key, pageable);
     }
 
     public Talaba getById(Long id) {
         return tsr.findById(id).get();
+    }
+
+       @Override
+    public Page<Talaba> getAll(Pageable pageable) {
+        return tsr.findAll(pageable);
     }
 
     public Talaba create(Talaba talaba) {
@@ -47,7 +52,7 @@ public class TalabaService implements Talabatimp {
 
 
     @Override
-    public Page<Talaba> findAllByFamilyaContainsIgnoreCaseOrIsmContainsIgnoreCaseOrSharifContainsIgnoreCaseOrHududContainsIgnoreCaseOrId(String key1, Pageable pageable) {
+    public Page<Talaba> getAllByFamilyaContainsIgnoreCaseOrIsmContainsIgnoreCaseOrSharifContainsIgnoreCaseOrHududContainsIgnoreCaseOrId(String key1, Pageable pageable) {
         try {
             Long n = Long.parseLong(key1);
             int i = Integer.parseInt(key1);
@@ -57,6 +62,11 @@ public class TalabaService implements Talabatimp {
 
 
         }
+    }
+
+    @Override
+    public Page<Talaba> getAllByTalented(Boolean b, Pageable pageable) {
+        return tsr.findAllByTalented(b, pageable);
     }
 
     public Page<Talaba> getAllByFilter(String key, Long fakultetId, Long yunalishId, Long guruhId, Pageable pageable) {

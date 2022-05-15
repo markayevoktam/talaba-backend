@@ -1,6 +1,7 @@
 package net.idrok.talababackend.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Student {
@@ -13,8 +14,8 @@ public class Student {
     private String hudud;
     private Long yosh;
     private String ishlashJoyi;
-    private String oqishgaKirYil;
-    private String oqishTugYil;
+    private LocalDate oqishgaKirYil;
+    private LocalDate oqishTugYil;
     private String info;
     @ManyToOne
     private Fayl rasm;
@@ -80,7 +81,21 @@ public class Student {
         this.hudud = hudud;
     }
 
+    public LocalDate getOqishgaKirYil() {
+        return oqishgaKirYil;
+    }
 
+    public void setOqishgaKirYil(LocalDate oqishgaKirYil) {
+        this.oqishgaKirYil = oqishgaKirYil;
+    }
+
+    public LocalDate getOqishTugYil() {
+        return oqishTugYil;
+    }
+
+    public void setOqishTugYil(LocalDate oqishTugYil) {
+        this.oqishTugYil = oqishTugYil;
+    }
 
     public String getIshlashJoyi() {
         return ishlashJoyi;
@@ -88,22 +103,6 @@ public class Student {
 
     public void setIshlashJoyi(String ishlashJoyi) {
         this.ishlashJoyi = ishlashJoyi;
-    }
-
-    public String getOqishgaKirYil() {
-        return oqishgaKirYil;
-    }
-
-    public void setOqishgaKirYil(String oqishgaKirYil) {
-        this.oqishgaKirYil = oqishgaKirYil;
-    }
-
-    public String getOqishTugYil() {
-        return oqishTugYil;
-    }
-
-    public void setOqishTugYil(String oqishTugYil) {
-        this.oqishTugYil = oqishTugYil;
     }
 
     public String getInfo() {
