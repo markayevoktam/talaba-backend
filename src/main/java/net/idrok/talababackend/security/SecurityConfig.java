@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http = http.cors().and().csrf().disable();
         // Barcha so'rovlar yopish
         http.authorizeRequests()
-                // fan'ni GET qilsishni umuman ochib qo'yish
+                // fan'lsishni umuman ochib qo'yish
                 .antMatchers(HttpMethod.POST, "/api/account/auth").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/account/register").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/fakultet").permitAll()

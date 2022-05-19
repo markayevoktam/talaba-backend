@@ -1,6 +1,9 @@
 package net.idrok.talababackend.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
@@ -8,15 +11,25 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
+    @Size(min = 3 , max = 20)
     private String ism;
+    @Size(min = 3 , max = 20)
+    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
     private String familya;
+    @Size(min = 3 , max = 20)
+    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
     private String sharif;
+    @Size(min = 3 )
     private String hudud;
+    @Min(10)
     private Long yosh;
+    @Size(min = 3 )
     private String ishlashJoyi;
     private LocalDate oqishgaKirYil;
     private LocalDate oqishTugYil;
     private String info;
+
     @ManyToOne
     private Fayl rasm;
 

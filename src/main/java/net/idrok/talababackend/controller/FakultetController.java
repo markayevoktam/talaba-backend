@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 public class FakultetController {
     @Autowired
     FakultetService fks;
+
+
     @GetMapping()
     public ResponseEntity<Page<Fakultet>> getAll(@RequestParam(name = "key",required = false) String key , Long id, Pageable pageable){
         if(key==null) key="";
@@ -27,6 +29,8 @@ public class FakultetController {
     public ResponseEntity<Fakultet> create(@RequestBody Fakultet fakultet){
         return ResponseEntity.ok(fks.create(fakultet));
     }
+
+
     @PutMapping()
     public ResponseEntity<Fakultet> update(@RequestBody Fakultet fakultet){
         return ResponseEntity.ok(fks.update(fakultet));

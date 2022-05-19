@@ -1,16 +1,26 @@
 package net.idrok.talababackend.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 public class Talaba {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(min = 3 , max = 20)
+    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
     private  String ism;
+    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
+    @Size(min = 3 , max = 20)
+    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
     private String familya;
+    @Size(min = 3 , max = 20)
+    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
     private String sharif;
+    @Min(10)
     private Long yosh;
+    @Size(min = 3 , max = 100)
     private String hudud;
 
     @ManyToOne
