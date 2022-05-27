@@ -35,7 +35,7 @@ public class TalabaController {
         tls.deleteById(id);
         return ResponseEntity.noContent().build();
     }
-
+// talaba add talented
     @GetMapping("/talented")
     public ResponseEntity<Page<Talaba>> getAllTalanted(Pageable pageable) {
         return  ResponseEntity.ok(tls.getAllByTalented(true, pageable));

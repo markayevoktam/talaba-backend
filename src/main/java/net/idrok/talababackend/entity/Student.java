@@ -11,23 +11,17 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
-    @Size(min = 3 , max = 20)
     private String ism;
-    @Size(min = 3 , max = 20)
-    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
     private String familya;
-    @Size(min = 3 , max = 20)
-    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
     private String sharif;
-    @Size(min = 3 )
+
     private String hudud;
-    @Min(10)
+
     private Long yosh;
-    @Size(min = 3 )
-    private String ishlashJoyi;
+   private String ishlashJoyi;
     private LocalDate oqishgaKirYil;
     private LocalDate oqishTugYil;
+    private OquvShakl oquvShakl;
     private String info;
 
     @ManyToOne
@@ -45,6 +39,13 @@ public class Student {
 
     }
 
+    public OquvShakl getOquvShakl() {
+        return oquvShakl;
+    }
+
+    public void setOquvShakl(OquvShakl oquvShakl) {
+        this.oquvShakl = oquvShakl;
+    }
 
     public Long getYosh() {
         return yosh;

@@ -9,8 +9,6 @@ public class Guruh {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Min(3)
-    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
     private String nom;
     @ManyToOne
     Yunalish yunalish;

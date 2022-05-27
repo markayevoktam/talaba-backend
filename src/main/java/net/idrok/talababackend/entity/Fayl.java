@@ -11,7 +11,6 @@ public class Fayl {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Min(3)
     private String nom;
     private String tur;
 

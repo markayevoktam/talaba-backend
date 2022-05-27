@@ -12,8 +12,6 @@ public class Xarakter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
-    @Min(3)
     private String nom;
     private String info;
     public Xarakter() {

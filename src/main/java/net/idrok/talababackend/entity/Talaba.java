@@ -8,25 +8,38 @@ public class Talaba {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Size(min = 3 , max = 20)
-    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
     private  String ism;
-    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
-    @Size(min = 3 , max = 20)
-    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
     private String familya;
-    @Size(min = 3 , max = 20)
-    @Pattern(regexp="^[a-zA-Z0-9]{3}",message="length must be 3")
     private String sharif;
-    @Min(10)
     private Long yosh;
-    @Size(min = 3 , max = 100)
     private String hudud;
+    private Long ball;
+
+
+
+    private OquvShakl oquvShakl;
+    private String info;
+//talaba add talented
+    private Boolean talented;
+
+
+    public Long getBall() {
+        return ball;
+    }
+
+    public void setBall(Long ball) {
+        this.ball = ball;
+    }
+
+    public Boolean getTalented() {
+        return talented;
+    }
 
     @ManyToOne
     private Fayl rasm;
 
-
+    @ManyToOne
+    Yutuq yutuq;
     @ManyToOne
     Loyiha loyiha;
     @ManyToOne
@@ -43,16 +56,18 @@ public class Talaba {
     @ManyToOne
     Xarakter xarakter;
 
-    private OquvShakl oquvShakl;
-
-
-    private String info;
-
-    private Boolean talented;
 
 
     public Talaba() {
 
+    }
+
+    public Yutuq getYutuq() {
+        return yutuq;
+    }
+
+    public void setYutuq(Yutuq yutuq) {
+        this.yutuq = yutuq;
     }
 
     public OquvShakl getOquvShakl() {
