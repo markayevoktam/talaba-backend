@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/talaba")
 @CrossOrigin(maxAge = 3600)
+
 public class TalabaController {
     @Autowired
     TalabaService tls;
     @GetMapping()
-    public ResponseEntity<Page<Talaba>> getAll(@RequestParam(name = "key",required = false) String key, Pageable pageable){
+    public ResponseEntity<Page<Talaba>> getAll(@RequestParam(name = "key",required = false ) String key, Pageable pageable){
         if(key==null) key="";
         return ResponseEntity.ok(tls.getAll(key, pageable));
     }

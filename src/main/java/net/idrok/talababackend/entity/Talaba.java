@@ -14,6 +14,7 @@ public class Talaba {
     private Long yosh;
     private String hudud;
     private Long ball;
+    private  String kurs;
 
 
 
@@ -60,6 +61,14 @@ public class Talaba {
 
     public Talaba() {
 
+    }
+
+    public String getKurs() {
+        return kurs;
+    }
+
+    public void setKurs(String kurs) {
+        this.kurs = kurs;
     }
 
     public Yutuq getYutuq() {

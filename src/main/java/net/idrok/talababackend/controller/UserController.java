@@ -34,7 +34,7 @@ public class UserController {
 
 
     @GetMapping()
-    public ResponseEntity<List<User>> getAll(@RequestParam(name = "key", required = false) String key, Pageable pageable) {
+    public ResponseEntity<List<User>> getAll(@RequestParam(name = "key", required = false ) String key, Pageable pageable) {
         if(key == null) key = "";
         return ResponseEntity.ok(userService.getAll(key));
     }
