@@ -1,5 +1,6 @@
 package net.idrok.talababackend.service;
 
+import lombok.RequiredArgsConstructor;
 import net.idrok.talababackend.entity.Guruh;
 import net.idrok.talababackend.entity.Yunalish;
 import net.idrok.talababackend.repository.GuruhRepository;
@@ -9,13 +10,19 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GuruhService {
-    @Autowired
-    GuruhRepository grr;
+   @Autowired
+   GuruhRepository grr;
     public Page<Guruh> getAll(String key , Long id, Pageable pageable){
         return grr.findAllByNomContainsIgnoreCaseOrId(key,id,pageable);
     }
+
+
+
+
     public Guruh getById(Long id){
         return grr.findById(id).get();
     }
@@ -36,5 +43,10 @@ public class GuruhService {
     }
     public void deleteById(Long id){
         grr.deleteById(id);
+    }
+
+
+    public Page<Guruh> getAllList(Pageable pageable){
+        return grr.findAll(pageable);
     }
 }
