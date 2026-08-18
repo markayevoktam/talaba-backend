@@ -21,7 +21,7 @@ public class UserMaxsus implements UserDetails {
         this.username = user.getLogin();
         this.password = user.getParol();
         this.authority = new HashSet<>();
-        this.authority.add(new SimpleGrantedAuthority(user.toString()));
+        this.authority.add(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
         this.enabled = user.getAktiv();
     }
 

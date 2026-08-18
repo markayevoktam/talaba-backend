@@ -1,6 +1,7 @@
 package net.idrok.talababackend.controller;
 
 
+import net.idrok.talababackend.entity.Role;
 import net.idrok.talababackend.entity.User;
 import net.idrok.talababackend.security.JwtUtil;
 import net.idrok.talababackend.security.Token;
@@ -40,6 +41,9 @@ public class AccountController {
 
     @PostMapping("/register")
     public UserDTO register(@RequestBody User user){
+        // Ochiq ro'yxatdan o'tishda rolni mijoz belgilay olmaydi
+        user.setId(null);
+        user.setRole(Role.USER);
         return new UserDTO(userService.create(user));
     }
 

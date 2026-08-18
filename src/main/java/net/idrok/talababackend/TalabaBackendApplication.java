@@ -1,5 +1,6 @@
 package net.idrok.talababackend;
 
+import net.idrok.talababackend.entity.Role;
 import net.idrok.talababackend.entity.User;
 import net.idrok.talababackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,14 @@ public class TalabaBackendApplication implements ApplicationRunner {
 			u.setLogin("admin123");
 			u.setParol(passwordEncoder.encode("admin123"));
 			u.setAktiv(true);
+			u.setRole(Role.ADMIN);
 
 			userRepository.save(u);
-
-	}
+		} else if (uk.get().getRole() != Role.ADMIN) {
+			// Rol ustuni keyin qo'shilgan: mavjud boshlang'ich admin'ga rol beriladi
+			User u = uk.get();
+			u.setRole(Role.ADMIN);
+			userRepository.save(u);
+		}
 	}
 }

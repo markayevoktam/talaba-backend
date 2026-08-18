@@ -1,6 +1,7 @@
 package net.idrok.talababackend.service.dto;
 
 
+import net.idrok.talababackend.entity.Role;
 import net.idrok.talababackend.entity.User;
 
 public class UserDTO {
@@ -9,6 +10,7 @@ public class UserDTO {
     private String familiya;
     private String login;
     private String parol;
+    private Role role;
     public UserDTO(){}
 
 
@@ -26,6 +28,7 @@ public class UserDTO {
         this.ism = user.getIsm();
         this.familiya = user.getFamiliya();
         this.login = user.getLogin();
+        this.role = user.getRole();
     }
 
     public Long getId() {
@@ -51,6 +54,12 @@ public class UserDTO {
     }
     public void setLogin(String login) {
         this.login = login;
+    }
+    public Role getRole() {
+        return role;
+    }
+    public void setRole(Role role) {
+        this.role = role;
     }
     public String getParol() {
         return parol;
