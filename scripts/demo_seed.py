@@ -6,7 +6,7 @@ Foydalanish:
   python3 scripts/demo_seed.py --api https://... --login admin123 --parol ...
 Rasmlar: PIL bo'lsa har bir talabaga 300x400 avatar yaratib yuklaydi.
 """
-import argparse, io, json, random, sys, urllib.request, urllib.error, uuid
+import argparse, io, json, random, sys, time, urllib.request, urllib.error, uuid
 
 random.seed(42)
 
@@ -18,20 +18,29 @@ ap.add_argument('--rasmsiz', action='store_true', help="rasm yaratmaslik")
 args = ap.parse_args()
 API = args.api.rstrip('/')
 
-def req(method, path, data=None, token=None, raw=None, ctype='application/json'):
+def req(method, path, data=None, token=None, raw=None, ctype='application/json', urinish=4):
+    """HTTP so'rov; tarmoq/timeout xatolarida qayta urinadi (uxlab qolgan server uchun)"""
     url = API + path
     body = raw if raw is not None else (json.dumps(data).encode() if data is not None else None)
-    r = urllib.request.Request(url, data=body, method=method)
-    if body is not None: r.add_header('Content-Type', ctype)
-    if token: r.add_header('Authorization', 'Bearer ' + token)
-    try:
-        with urllib.request.urlopen(r, timeout=120) as resp:
-            t = resp.read().decode()
-            return json.loads(t) if t else None
-    except urllib.error.HTTPError as e:
-        print(f"  XATO {method} {path}: {e.code} {e.read().decode()[:200]}")
-        return None
+    for i in range(urinish):
+        r = urllib.request.Request(url, data=body, method=method)
+        if body is not None: r.add_header('Content-Type', ctype)
+        if token: r.add_header('Authorization', 'Bearer ' + token)
+        try:
+            with urllib.request.urlopen(r, timeout=180) as resp:
+                t = resp.read().decode()
+                return json.loads(t) if t else None
+        except urllib.error.HTTPError as e:
+            print(f"  XATO {method} {path}: {e.code} {e.read().decode()[:200]}")
+            return None
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            print(f"  ulanish xatosi ({i+1}/{urinish}) {method} {path}: {e}; qayta urinish...")
+            time.sleep(10)
+    return None
 
+# Uxlab qolgan serverni uyg'otish
+print("Server tekshirilmoqda...")
+req('GET', '/api/public/talaba?page=0&size=1')
 tok = req('POST', '/api/account/auth', {'username': args.login, 'password': args.parol})
 if not tok: sys.exit("Login bo'lmadi")
 T = tok['token']
