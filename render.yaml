@@ -19,5 +19,3 @@ services:
         value: https://talaba-frontend.pages.dev,http://localhost:4200
       - key: FILES_DIR
         value: /app/files
-      - key: JAVA_TOOL_OPTIONS
-        value: -XX:MaxRAMPercentage=70
