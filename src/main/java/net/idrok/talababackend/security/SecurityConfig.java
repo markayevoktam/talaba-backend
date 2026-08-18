@@ -1,6 +1,7 @@
 package net.idrok.talababackend.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -33,6 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     SecurityFilter securityFilter;
     @Autowired
     PasswordEncoder encoder;
+
+    @Value("${cors.allowed-origins}")
+    String[] allowedOrigins;
 
 
     @Bean
@@ -78,7 +82,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("http://localhost:4200");
+        for (String origin : allowedOrigins) {
+            config.addAllowedOrigin(origin.trim());
+        }
         config.addAllowedHeader("*");
         config.addAllowedMethod("OPTIONS");
         config.addAllowedMethod("HEAD");
