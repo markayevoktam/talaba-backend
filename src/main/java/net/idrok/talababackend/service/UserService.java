@@ -47,8 +47,27 @@ public class UserService {
     }
 
 
+    /**
+     * Tahrirlash: parol bo'sh kelsa eskisi qoladi, yangi kelsa xeshlanadi.
+     * Ro'yxatdan o'tish vaqti, oxirgi tashrif va aktivlik mijozdan olinmaydi.
+     */
     public User update(User entity) {
-        // TODO Auto-generated method stub
+        User eski = userRepository.findById(entity.getId())
+                .orElseThrow(() -> new RuntimeException("Foydalanuvchi topilmadi: " + entity.getId()));
+        String parol = entity.getParol();
+        if (parol == null || parol.isBlank() || parol.equals(eski.getParol())) {
+            entity.setParol(eski.getParol());
+        } else {
+            entity.setParol(encoder.encode(parol));
+        }
+        entity.setRegVaqt(eski.getRegVaqt());
+        entity.setOxirgiTashrif(eski.getOxirgiTashrif());
+        if (entity.getAktiv() == null) {
+            entity.setAktiv(eski.getAktiv());
+        }
+        if (entity.getRole() == null) {
+            entity.setRole(eski.getRole());
+        }
         return userRepository.save(entity);
     }
 
